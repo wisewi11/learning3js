@@ -131,6 +131,7 @@ const holyDonut = new THREE.Mesh(
 )
 holyDonut.layers.enable(1)
 holyDonut.position.y = 3.5
+holyDonut.scale.set(2,2,2)
 scene.add(holyDonut)
 
 // Cube render target
@@ -151,26 +152,26 @@ cubeCamera.layers.set(1)
  * Torus Knot
  */
 const torusKnot = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(1, 0.4, 100, 16),
+    new THREE.TorusKnotGeometry(6, 2, 200, 200),
     new THREE.MeshStandardMaterial({ roughness: 0, metalness: 1, color: 0xaaaaaa })
 )
-torusKnot.position.x = - 4
+torusKnot.position.x = 0
 torusKnot.position.y = 4
 scene.add(torusKnot)
 
 /**
  * Models
  */
-gltfLoader.load(
-    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
-    (gltf) =>
-    {
-        gltf.scene.scale.set(10, 10, 10)
-        scene.add(gltf.scene)
+// gltfLoader.load(
+//     '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+//     (gltf) =>
+//     {
+//         gltf.scene.scale.set(10, 10, 10)
+//         scene.add(gltf.scene)
 
-        updateAllMaterials()
-    }
-)
+//         updateAllMaterials()
+//     }
+// )
 
 /**
  * Sizes
@@ -232,6 +233,7 @@ const tick = () =>
         holyDonut.rotation.x = Math.sin(elapsedTime) * 2
 
         cubeCamera.update(renderer, scene)
+        camera
     }
 
     // Update controls
